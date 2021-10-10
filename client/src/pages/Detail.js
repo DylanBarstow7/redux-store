@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import Cart from '../components/Cart';
-import { useStoreContext } from '../utils/GlobalState';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
@@ -15,13 +15,12 @@ import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
 
 function Detail() {
-  const [state, dispatch] = useStoreContext();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
   const { id } = useParams();
 
   const [currentProduct, setCurrentProduct] = useState({});
-
   const { loading, data } = useQuery(QUERY_PRODUCTS);
-
   const { products, cart } = state;
 
   useEffect(() => {
@@ -35,7 +34,6 @@ function Detail() {
         type: UPDATE_PRODUCTS,
         products: data.products,
       });
-
       data.products.forEach((product) => {
         idbPromise('products', 'put', product);
       });
@@ -50,7 +48,6 @@ function Detail() {
       });
     }
   }, [products, data, loading, dispatch, id]);
-
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
     if (itemInCart) {
@@ -77,7 +74,6 @@ function Detail() {
       type: REMOVE_FROM_CART,
       _id: currentProduct._id,
     });
-
     idbPromise('cart', 'delete', { ...currentProduct });
   };
 
@@ -86,11 +82,8 @@ function Detail() {
       {currentProduct && cart ? (
         <div className="container my-1">
           <Link to="/">← Back to Products</Link>
-
           <h2>{currentProduct.name}</h2>
-
           <p>{currentProduct.description}</p>
-
           <p>
             <strong>Price:</strong>${currentProduct.price}{' '}
             <button onClick={addToCart}>Add to Cart</button>
@@ -101,7 +94,6 @@ function Detail() {
               Remove from Cart
             </button>
           </p>
-
           <img
             src={`/images/${currentProduct.image}`}
             alt={currentProduct.name}
