@@ -1,32 +1,38 @@
-# 📐 Add Comments to Implementation of a Reducer
+# Redux Store
+## Table of Contents
+- [Description](#Description)
+- [Deployment](#live)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#tech)
+- [Questions / Contacts](#Contacts)
 
-Work with a partner to add comments describing the functionality of the code found in [reducers.js](.Unsolved/client/src/utils/reducers.js).
+## Description
+An eccomerce app refactored to use redux instead of Context API. 
 
-## 📝 Notes
+![showcase](./Assets/redux-store-local.PNG)
 
-What is the purpose of the action argument that gets passed to the reducer function?
+## Live
+Live Deployment: 
 
-How can we account for multiple types of actions inside the reducer?
+## Installation
 
-Refer to the documentation: 
+First you'll clone the repo then you'll run the following lines into your terminal.
+`npm i` to install all packages in client and server
+`npm run seed` in server
+`npm start` in server and client, application will run on localhost:3000
 
-[React documentation on useReducer](https://reactjs.org/docs/Hooks-reference.html#usereducer)
+## Usage
 
----
+Signup or login at the top of the page. Browse products and click them to open background information. Add them to cart with add to cart button, remove from cart with remove button. You can only checkout if you're logged in. Checkout takes you to stripe page to complete payment info.
 
-## 💡 Hints
+![Demo GIF](./Assets/redux-store.gif)
 
-How do we make sure that the database is seeded?
+## Tech
+React, Redux, Stripe, bcrypt, Mongoose, Express, node.js, Apollo, GraphQL and JSON Web Token
 
-Which `npm` package allows us to run both the front end and the back end at the same time? How do you start it?
+## Contact
 
-## 🏆 Bonus
+For enquiries contact me at dcbarstow7@gmail.com
 
-If you have completed this activity, work through the following challenge with your partner to further your knowledge:
-
-* Why do we create variable names for each action type in `actions.js`?
-
-Use [Google](https://www.google.com) or another search engine to research this.
-
----
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+To see other projects, please visit <https://github.com/DylanBarstow7/>
